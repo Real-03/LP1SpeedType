@@ -176,7 +176,7 @@ namespace SpeedType
             AnsiConsole.Clear();
             var chart = new BarChart()
                 .Width(60)
-                .Label("[grey]Eliminações por rodada[/]")
+                .Label("[grey]Accuracy Bar Chart[/]")
                 .CenterLabel();
             for (int i = 0; i < gameStats.Length; i++)
             {

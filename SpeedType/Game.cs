@@ -115,11 +115,11 @@ namespace SpeedType
             // Shift existing entries
             for (int i = gameStats.Length - 1; i > 0; i--)
             {
-                // ////////// => TO IMPLEMENT <= //////////// //
+                gameStats[i]=gameStats[i-1];
             }
 
-            // Add new result at the beginning
-            //gameStats[0] = // ////////// => TO IMPLEMENT <= //////////// //
+
+            gameStats[0] = new GameResult(wpm,accuracy,timeTaken);
 
             AnsiConsole.MarkupLine("\n[bold yellow]Results:[/]");
             AnsiConsole.MarkupLine($"[bold]Time Taken:[/] {timeTaken:F2} " +

@@ -56,7 +56,7 @@ namespace SpeedType
         public string GetRandomSentence()
         {
 
-            return sentences[random.Next(sentences.Length)];
+            return sentences[random.Next(sentences.Length)].Humanize(LetterCasing.Title);
         }
     }
 }

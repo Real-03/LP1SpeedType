@@ -55,7 +55,7 @@ namespace SpeedType
                 string choice = AnsiConsole.Prompt(
                     new SelectionPrompt<string>()
                         .Title("[bold yellow]Speed Type[/]")
-                        .AddChoices("Start Game", "View Game Stats", "Quit"));
+                        .AddChoices("Start Game", "View Game Stats","View Game Stats BarChart", "Quit"));
 
                 switch (choice)
                 {
@@ -64,6 +64,9 @@ namespace SpeedType
                         break;
                     case "View Game Stats":
                         ShowGameStats();
+                        break;
+                    case "View Game Stats BarChart":
+                        ShowGameStatsBarChart();
                         break;
                     case "Quit":
                         return;
@@ -164,6 +167,53 @@ namespace SpeedType
             }
 
             AnsiConsole.Write(table);
+            AnsiConsole.Markup("\n[bold green]Press Enter to Return to " +
+                "Menu...[/]");
+            Console.ReadLine();
+        }
+        private void ShowGameStatsBarChart()
+        {
+            AnsiConsole.Clear();
+            var chart = new BarChart()
+                .Width(60)
+                .Label("[grey]Eliminações por rodada[/]")
+                .CenterLabel();
+            for (int i = 0; i < gameStats.Length; i++)
+            {
+                if (gameStats[i] != null)
+                {
+                    if(gameStats[i].Accuracy>=0 && gameStats[i].Accuracy<10)
+                        chart.AddItem("0% - 9%", gameStats[i].Accuracy, ConsoleColor.Red);
+                    else if(gameStats[i].Accuracy>=10 && gameStats[i].Accuracy<20)
+                        chart.AddItem("10% - 19%", gameStats[i].Accuracy, ConsoleColor.Red);
+                    else if(gameStats[i].Accuracy>=20 && gameStats[i].Accuracy<30)
+                        chart.AddItem("20% - 29%", gameStats[i].Accuracy, ConsoleColor.Orange);
+                    else if(gameStats[i].Accuracy>=30 && gameStats[i].Accuracy<40)
+                        chart.AddItem("30% - 39%", gameStats[i].Accuracy, ConsoleColor.Orange);
+                    else if(gameStats[i].Accuracy>=40 && gameStats[i].Accuracy<50)
+                        chart.AddItem("40% - 49%", gameStats[i].Accuracy, ConsoleColor.Yellow);
+                    else if(gameStats[i].Accuracy>=50 && gameStats[i].Accuracy<60)
+                        chart.AddItem("50% - 59%", gameStats[i].Accuracy, ConsoleColor.Yellow);
+                    else if(gameStats[i].Accuracy>=60 && gameStats[i].Accuracy<70)
+                        chart.AddItem("60% - 69%", gameStats[i].Accuracy, ConsoleColor.Green);
+                    else if(gameStats[i].Accuracy>=70 && gameStats[i].Accuracy<80)
+                        chart.AddItem("70% - 79%", gameStats[i].Accuracy, ConsoleColor.Green);
+                    else if(gameStats[i].Accuracy>=80 && gameStats[i].Accuracy<90)
+                        chart.AddItem("80% - 89%", gameStats[i].Accuracy, ConsoleColor.Green);
+                    else if(gameStats[i].Accuracy>=90 && gameStats[i].Accuracy<100)
+                        chart.AddItem("90% - 99%", gameStats[i].Accuracy, ConsoleColor.Gren);
+                    else if(gameStats[i].Accuracy==100 )
+                        chart.AddItem("100%", gameStats[i].Accuracy, ConsoleColor.Red);
+                
+
+                    
+                }
+            }
+            
+
+            
+            
+            AnsiConsole.Write(chart);
             AnsiConsole.Markup("\n[bold green]Press Enter to Return to " +
                 "Menu...[/]");
             Console.ReadLine();

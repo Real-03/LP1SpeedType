@@ -26,7 +26,7 @@ namespace SpeedType
         public double CalculateWPM(string userInput, double timeTaken)
         {
 
-            int wordsTyped = 1;
+            int wordsTyped = (userInput.Split(' ').Length);
             return (Convert.ToDouble(wordsTyped) / timeTaken) * 60;
 
         }

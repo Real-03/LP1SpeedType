@@ -87,7 +87,7 @@ namespace SpeedType
         private void StartGame()
         {
             // The sentence that will be presented to the player.
-            string sentence = "teste adwa sentenceProvider.GetRandomSentence()";
+            string sentence = sentenceProvider.GetRandomSentence();
 
             AnsiConsole.Clear();
             AnsiConsole.MarkupLine("[bold green]Type This Sentence:[/]");

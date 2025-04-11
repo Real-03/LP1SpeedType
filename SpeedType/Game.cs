@@ -110,7 +110,7 @@ namespace SpeedType
 
             // The accuracy percentage calculated based on the user's input and
             // the original sentence.
-            int accuracy = 1;
+            int accuracy = evaluator.CalculateAccuracy(userInput,sentence);
 
             // Shift existing entries
             for (int i = gameStats.Length - 1; i > 0; i--)

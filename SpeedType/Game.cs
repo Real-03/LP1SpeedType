@@ -30,7 +30,9 @@ namespace SpeedType
         /// </summary>
         public Game()
         {
-            // ////////// => TO IMPLEMENT <= //////////// //
+            sentenceProvider = new SentenceProvider();
+            evaluator = new Evaluator();
+            gameStats = new GameResult[5];
         }
 
         /// <summary>
@@ -85,7 +87,7 @@ namespace SpeedType
         private void StartGame()
         {
             // The sentence that will be presented to the player.
-            string sentence = // ////////// => TO IMPLEMENT <= //////////// //
+            string sentence = "teste adwa sentenceProvider.GetRandomSentence()";
 
             AnsiConsole.Clear();
             AnsiConsole.MarkupLine("[bold green]Type This Sentence:[/]");
@@ -104,11 +106,11 @@ namespace SpeedType
 
             // The words per minute (WPM) calculated based on the time taken 
             // and the user input.
-            double wpm = // ////////// => TO IMPLEMENT <= //////////// //
+            double wpm = evaluator.CalculateWPM(userInput,timeTaken);
 
             // The accuracy percentage calculated based on the user's input and
             // the original sentence.
-            int accuracy = // ////////// => TO IMPLEMENT <= //////////// //
+            int accuracy = 1;
 
             // Shift existing entries
             for (int i = gameStats.Length - 1; i > 0; i--)
@@ -117,7 +119,7 @@ namespace SpeedType
             }
 
             // Add new result at the beginning
-            gameStats[0] = // ////////// => TO IMPLEMENT <= //////////// //
+            //gameStats[0] = // ////////// => TO IMPLEMENT <= //////////// //
 
             AnsiConsole.MarkupLine("\n[bold yellow]Results:[/]");
             AnsiConsole.MarkupLine($"[bold]Time Taken:[/] {timeTaken:F2} " +
